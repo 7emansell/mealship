@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, View, Text, Button, SafeAreaView } from "react-native";
-import Logo from "./Logo.svg";
+import Logo from "../assets/Logo.svg";
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -20,7 +20,11 @@ export default function HomeScreen({ navigation }) {
           title="Donor Signup"
           onPress={() => navigation.navigate("Donor Home")}
         />
-        <Button color="blue" title="Become a Vendor" />
+        <Button
+          color="blue"
+          title="Become a Vendor"
+          onPress={() => navigation.navigate("Vendor Home")}
+        />
       </View>
     </SafeAreaView>
   );

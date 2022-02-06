@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, Dimensions, Button } from "react-native";
 import { LogoWithContainer } from "../components/LogoWithContainer";
-import axios from "../util/axios";
+import QRCode from "react-native-qrcode-generator";
 
 export default function RecipientRequestScreen({ navigation }) {
+  const [message, setMessage] = useState("");
+  const [showQR, setShowQR] = useState(false);
+
+  async function handleMessages() {
+    setShowQR(false);
+    setMessage(
+      "Your request for a meal has been received! Your request will be fulfilled promptly as we wait for a donor."
+    );
+
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+
+    setMessage(
+      "Your request for a meal has been fulfilled! Here is your QR code that you may scan at any of our supported locations:"
+    );
+    setShowQR(true);
+  }
+
   return (
     <View>
       <View>
@@ -11,9 +28,13 @@ export default function RecipientRequestScreen({ navigation }) {
         <Text style={styles.heading}>
           Need assistance? Request a meal using the MealShip Network.
         </Text>
-        <Button title="Request a meal" onPress={() => axios.post("/request-a-meal", {
-          recipientId: 
-        })} />
+        <Button title="Request a meal" onPress={handleMessages} />
+        <Text style={styles.processingMessage}>{message}</Text>
+        <View style={styles.qrCodeContainer}>
+          {showQR && (
+            <QRCode value="http://localhost:3000/?purchaseAmount=$14.53&amp;voucherId=12345" />
+          )}
+        </View>
       </View>
     </View>
   );
@@ -30,5 +51,15 @@ const styles = StyleSheet.create({
     marginBottom: 200,
     paddingHorizontal: 10,
     fontSize: 24,
+  },
+  processingMessage: {
+    paddingHorizontal: 20,
+    fontSize: 20,
+    textAlign: "center",
+  },
+  qrCodeContainer: {
+    display: "flex",
+    alignItems: "center",
+    paddingTop: 20,
   },
 });

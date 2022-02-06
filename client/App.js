@@ -15,8 +15,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import DonorMapScreen from "./src/screens/DonorMapScreen";
 import RecipientRequestScreen from "./src/screens/RecipientRequestScreen";
 import HomeScreen from "./src/screens/HomeScreen";
-
-
+import VendorMenu from "./src/screens/VendorMenu";
 
 const Stack = createNativeStackNavigator();
 
@@ -26,7 +25,11 @@ function App() {
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Donor Home" component={DonorMapScreen} />
-        <Stack.Screen name="Recipient Home" component={RecipientRequestScreen} />
+        <Stack.Screen name="Vendor Home" component={VendorMenu} />
+        <Stack.Screen
+          name="Recipient Home"
+          component={RecipientRequestScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
