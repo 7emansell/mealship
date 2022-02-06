@@ -1,4 +1,13 @@
-function RecipientRequestScreen({ navigation }) {
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  Button,
+  SafeAreaView,
+} from "react-native";
+export default function RecipientRequestScreen({ navigation }) {
     const RecipientComponent = () => {
       const [location, setLocation] = React.useState(null);
       const [error, setError] = React.useState(null);

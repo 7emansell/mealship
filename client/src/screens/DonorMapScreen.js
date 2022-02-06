@@ -1,4 +1,18 @@
-function DonorMapScreen({ navigation }) {
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  Button,
+  SafeAreaView,
+} from "react-native";
+import { LogoWithContainer } from "./LogoWithContainer";
+import MapView, { Marker } from "react-native-maps";
+import { FontAwesome } from "@expo/vector-icons";
+import * as Location from "expo-location";
+
+export default function DonorMapScreen({ navigation }) {
     const DonorComponent = () => {
       const [location, setLocation] = React.useState(null);
       const [error, setError] = React.useState(null);
@@ -53,5 +67,8 @@ function DonorMapScreen({ navigation }) {
     });
   
     return <DonorComponent />;
-  }
+  };
+
+
+
   

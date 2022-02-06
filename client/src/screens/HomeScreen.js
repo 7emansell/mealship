@@ -1,4 +1,16 @@
-function HomeScreen({ navigation }) {
+import React from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Dimensions,
+  Button,
+  SafeAreaView,
+} from "react-native";
+import Logo from "./Logo.svg";
+import { LogoWithContainer } from "./LogoWithContainer";
+
+export default function HomeScreen({ navigation }) {
     return (
       <SafeAreaView>
         <View style={styles.logoContainer}>
@@ -20,5 +32,22 @@ function HomeScreen({ navigation }) {
         </View>
       </SafeAreaView>
     );
-  }
+  };
+
+  const styles = StyleSheet.create({
+    logoContainer: {
+      display: "flex",
+      width: "100%",
+      alignItems: "center",
+      paddingTop: 100,
+      marginBottom: 250,
+    },
+    subheading: {
+      fontSize: 30,
+    },
+    buttonContainer: {
+      display: "flex",
+      flexDirection: "column",
+    },
+  });
   
