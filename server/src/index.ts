@@ -66,6 +66,16 @@ createConnection().then((connection) => {
     return res.json(vendorData);
   });
 
+  app.post("/request-a-meal", async (req, res) => {
+    const { recipientId } = req.body;
+
+    const recipient = await recipientRepository.update(recipientId, {
+      isMealRequested: true,
+    });
+
+    return res.json(recipient);
+  });
+
   // Donor - Donation
   app.post("/donate", async (req, res) => {
     const { donorId, vendorId, messageFromDonor } = req.body;
@@ -80,6 +90,9 @@ createConnection().then((connection) => {
     // Get the corresponding recipient
     const recipient = (
       await recipientRepository.find({
+        where: {
+          isMealRequested: true,
+        },
         order: {
           need: "DESC",
         },

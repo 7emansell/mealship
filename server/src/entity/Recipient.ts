@@ -17,4 +17,7 @@ export class Recipient {
 
   @OneToMany(() => Voucher, (voucher) => voucher.recipient)
   vouchers: Voucher[];
+
+  @Column({ default: false })
+  isMealRequested: boolean;
 }
