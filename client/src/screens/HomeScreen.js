@@ -8,7 +8,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import Logo from "./Logo.svg";
-import { LogoWithContainer } from "./LogoWithContainer";
 
 export default function HomeScreen({ navigation }) {
     return (

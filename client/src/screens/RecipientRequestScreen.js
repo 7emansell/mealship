@@ -7,6 +7,8 @@ import {
   Button,
   SafeAreaView,
 } from "react-native";
+import { LogoWithContainer } from "./LogoWithContainer";
+
 export default function RecipientRequestScreen({ navigation }) {
     const RecipientComponent = () => {
       const [location, setLocation] = React.useState(null);
@@ -29,7 +31,7 @@ export default function RecipientRequestScreen({ navigation }) {
           <View>
             <LogoWithContainer />
             <Text style={styles.heading}>
-              Need assistance? Request a meal using the MealShip Network.
+              Need a meal? Send out a request to your community.
             </Text>
             <Button title="Request a meal" />
           </View>
@@ -44,6 +46,7 @@ export default function RecipientRequestScreen({ navigation }) {
       },
       heading: {
         alignSelf: "center",
+        textAlign: "center",
         paddingTop: 20,
         marginBottom: 200,
         paddingHorizontal: 10,
